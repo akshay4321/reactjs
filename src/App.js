@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import FormBuilder from './components/FormBuilder';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 function App() {
+  const [selectedForm, setSelectedForm] = useState('');
+
+  const handleFormSelect = (formId) => {
+    setSelectedForm(formId);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DndProvider backend={HTML5Backend}>
+      <div className="container">
+        <h1>Form Builder</h1>
+        <FormBuilder />
+      </div>
+      <br/>
+      
+    </DndProvider>
   );
 }
 
